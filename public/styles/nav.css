@@ -1,0 +1,32 @@
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4056A1;
+  height: 120px;
+  padding: 1.5em;
+  
+}
+
+.tweeter {
+  color: #ffffff;
+  background-color: #4056A1;
+  font-family: 'Bungee', cursive;
+  /* margin: 1.5em; */
+}
+
+.write-new-tweet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: 'Source Sans Pro', sans-serif;
+
+}
+
+.double-arrow {
+  width: 20px;
+  height: 20px;
+}

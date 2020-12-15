@@ -1,0 +1,23 @@
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: orange;
+  height: 400px;
+  width: 100%
+  
+}
+
+.avatar {
+  display: flex;
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.name {
+  color: #ffff;
+  display: flex;
+  align-items: flex-start;
+}
