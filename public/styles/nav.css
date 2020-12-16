@@ -6,6 +6,10 @@
   background-color: #4056A1;
   height: 120px;
   padding: 1.5em;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
   
 }
 
