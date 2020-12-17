@@ -2,7 +2,7 @@ $(document).ready(function() {
   console.log( "ready!" );
 
   $("#tweet-text").on("input", function(){
-    console.log(this)
+    // console.log(this)
     const count = $(this).val().length;
     const counter = 140 - count;
     
