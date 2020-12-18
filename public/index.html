@@ -28,6 +28,9 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
     integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
+  <!-- Error CSS -->
+  <link rel="stylesheet" href="/styles/error.css" type="text/css" />
+
   <!-- External JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -67,12 +70,16 @@
   <!-- Page-specific (main) content here -->
   <main class="container">
     <section class="new-tweet">
-      <!-- <h2>Compose Tweet</h2> -->
+
+      <div class="error-messages" id="error-message-id">
+          <i class="fas fa-exclamation-triangle"></i>
+      </div>
+
       <form class="tweet-form" action="/tweets" method="POST">
         <div>
           <label for="tweet-text">What are you humming about?</label>
         </div>
-        <textarea name="text" id="tweet-text" maxlength="140"></textarea>
+        <textarea name="text" id="tweet-text"></textarea>
         <footer class="button-count-container">
           <button type="submit">Tweet</button>
           <output name="counter" class="counter" for="tweet-text">140</output>
@@ -81,7 +88,7 @@
     </section>
 
     <section id="tweet-container">
-      
+
     </section>
 
   </main>

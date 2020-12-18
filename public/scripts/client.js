@@ -1,30 +1,3 @@
-// Test / driver code (temporary). Eventually will get this from the server.
-// const data = [
-//   {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": "https://i.imgur.com/73hZDYK.png"
-//       ,
-//       "handle": "@SirIsaac"
-//     },
-//     "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//     "created_at": 1461116232227
-//   },
-//   {
-//     "user": {
-//       "name": "Descartes",
-//       "avatars": "https://i.imgur.com/nlhLi3I.png",
-//       "handle": "@rd"
-//     },
-//     "content": {
-//       "text": "Je pense , donc je suis"
-//     },
-//     "created_at": 1461113959088
-//   }
-// ];
-
 $(document).ready(function () {
 
   /*
@@ -32,26 +5,44 @@ $(document).ready(function () {
    * jQuery is already loaded
    * Reminder: Use (and do all your DOM work in) jQuery's document ready function
    */
-  
 
-  // $(".tweet-form").on('submit', onSubmit(event));
+  $(".error-messages").hide();
+
   $(".tweet-form").on('submit', onSubmit);
 
-  // renderTweets(data);
-
   loadTweets();
-
 });
 
+const errorBoxOne = '<i class="fas fa-exclamation-triangle"></i> Please fill in your tweet message.';
+const errorBoxTwo = '<i class="fas fa-exclamation-triangle"></i> Your message has reach the maximum characters limit (140 max)!';
+
 function onSubmit(event) {
-  // stop the form from being submitted
+  // Stop the form from being submitted
   event.preventDefault();
+  const $errorBox = $(".error-messages");
   const form = $(this);
+  const counter = form.find(".counter");
+  const text = $("#tweet-text").val();
+
+  if (!text) {
+    $errorBox.html(errorBoxOne).slideDown();
+    return;
+  }
+
+  if (text.length > 140) {
+    $errorBox.html(errorBoxTwo).slideDown();
+    return;
+  }
   // Encode a set of form elements as a string for submission.
   const data = form.serialize();
-  $.ajax("/tweets", { method: "POST", data: data})
-  .then (console.log("DONE!"));
 
+  $.ajax("/tweets", { method: "POST", data: data })
+    .then(() => {
+      $("#tweet-text").val("");
+      counter.text(140);
+      // $(".counter").text(140);
+      loadTweets();
+    });
 }
 
 // Add tweet to the tweets container
@@ -64,6 +55,12 @@ function renderTweets(tweetsArr) {
   }
 }
 
+function escape(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 function createTweetElement(tweetData) {
   const tweet = `
     <article class="tweet">
@@ -74,7 +71,7 @@ function createTweetElement(tweetData) {
           </div>
           <span class="alias">${tweetData.user.handle}</span>
         </header>
-        <span class="content">${tweetData.content.text}</span>
+        <span class="content">${escape(tweetData.content.text)}</span>
         <footer class=tweet-footer>
           <h5>10 days ago</h5>
           <span>
@@ -93,8 +90,14 @@ function loadTweets() {
     url,
     method: 'GET',
   })
-  .done(function(data) {
-    console.log('fetched data: ', data);
-    renderTweets(data);    
-  })
+    .done(function (data) {
+      $("#tweet-container").empty();
+      renderTweets(data);
+    })
+    .fail(function () {
+      alert('error');
+    })
+    .always(function () {
+      console.log('complete');
+    })
 }
