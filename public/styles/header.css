@@ -4,18 +4,24 @@
   justify-content: flex-start;
   align-items: center;
   background-color: orange;
-  height: 380px;
+  height: 470px;
   width: 100%;
-  margin-top: 120px;
+  margin-top: 0px;
   margin-bottom: 20px;  
 }
 
-.avatar {
+.main-avatar {
   display: flex;
+  margin-top: 110px;
 }
 
 .name {
-  color: #ffff;
   display: flex;
   align-items: flex-start;
+  font-size: 1.5rem;
+  color: #ffff;
+}
+
+.name span {
+  font-weight: 100;
 }

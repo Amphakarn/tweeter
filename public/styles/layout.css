@@ -17,7 +17,7 @@ html {
 body {
   color: #545149;
   background-color: #f4f1ec;
-  font-size: 24px;
+  font-size: 1rem;
   font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -28,6 +28,38 @@ body {
  .container {
    margin-left: 5%;
    margin-right: 5%;
-   padding: 10px;
+   padding: 1rem;
    width: 90%;
  }
+
+
+@media only screen and (min-width: 791px) {
+  body {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+
+@media only screen and (max-width: 790px) {
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .top-bar {
+    position: relative;
+    background-color: transparent;
+    
+  }
+
+}
+
+
+
+ /* @media only screen and (max-width: 600px) and (min-width: 400px) {
+   html {
+     font-size: 1.4em;
+   }
+
+ } */

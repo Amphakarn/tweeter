@@ -92,6 +92,7 @@ function loadTweets() {
   })
     .done(function (data) {
       $("#tweet-container").empty();
+      console.log("data: ", data)
       renderTweets(data);
     })
     .fail(function () {
