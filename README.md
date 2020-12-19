@@ -13,9 +13,16 @@ This is a part of Lighthouse Labs Web Development Bootcamp Project. This reposit
 - Chance
 
 
-## Final Product
-!["screenshot login page"]()
+## Screenshots
 
+### Large Screen View
+!["Large Screen View"]()
+
+### Small Screen View
+!["Small Screen View"]()
+
+### Hover State
+!["Hover State"]()
 
 
 ## Getting Started
