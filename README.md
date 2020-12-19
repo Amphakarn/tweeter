@@ -16,13 +16,13 @@ This is a part of Lighthouse Labs Web Development Bootcamp Project. This reposit
 ## Screenshots
 
 ### Large Screen View
-!["Large Screen View"]()
+!["Large Screen View"](https://github.com/Amphakarn/tweeter/blob/master/docs/large_screen_view.png?raw=true)
 
 ### Small Screen View
-!["Small Screen View"]()
+!["Small Screen View"](https://github.com/Amphakarn/tweeter/blob/master/docs/small_screen_view.png?raw=true)
 
 ### Hover State
-!["Hover State"]()
+!["Hover State"](https://github.com/Amphakarn/tweeter/blob/master/docs/hover_state.png?raw=true)
 
 
 ## Getting Started
