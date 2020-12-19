@@ -61,19 +61,43 @@ function escape(str) {
   return div.innerHTML;
 };
 
+function fixDate(tweetDate) {
+  let currentDate = new Date();
+  let timeDiff = currentDate - tweetDate;
+  let timeSec = timeDiff / 1000;
+  let timeDays = timeSec / 86400;
+  let timeHours = timeSec / 3600;
+  let timeMinutes = timeSec / 60;
+
+  if (timeDays > 1) {
+    return Math.floor(timeDays) + " days ago";
+  }
+
+  if (timeHours > 1) {
+    return Math.floor(timeHours) + " hours ago";
+  }
+
+  if (timeMinutes > 1) {
+    return Math.floor(timeMinutes) + " minutes ago";
+  }
+
+  return Math.floor(timeSec) + " seconds ago";
+}
+
 function createTweetElement(tweetData) {
+  console.log('tweetData: ', tweetData)
   const tweet = `
     <article class="tweet">
         <header class="tweet-header">
           <div class="tweet-message">
-            <img class="avatar" src="/images/user-astronaut-solid.svg">
+            <img class="avatar" src=${tweetData.user.avatars}>
             <span class="name"></span><strong>${tweetData.user.name}</strong></span>
           </div>
           <span class="alias">${tweetData.user.handle}</span>
         </header>
         <span class="content">${escape(tweetData.content.text)}</span>
         <footer class=tweet-footer>
-          <h5>10 days ago</h5>
+          <h5>${fixDate(tweetData.created_at)}</h5>
           <span>
             <i class="fas fa-flag"></i>
             <i class="fas fa-retweet"></i>

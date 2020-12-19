@@ -34,9 +34,36 @@ body {
 
 
 @media only screen and (min-width: 791px) {
+  html {
+    font-size: 1.15em;
+  }
+
   body {
     display: flex;
     flex-direction: row;
+  }
+
+  .main-header {
+    width: 700px;
+    height: 500px;
+    margin-top: 180px;
+    margin-left: 50px;
+  }
+
+  .main-header div {
+    margin-top: 60px;
+  }
+
+  .main-header .name {
+    margin-top: 0px;
+  }
+
+  .tweeter {
+    background-color: #4056A1 ;
+  }
+
+  .container {
+    margin-top: 165px;
   }
 }
 
@@ -49,10 +76,17 @@ body {
 
   .top-bar {
     position: relative;
-    background-color: transparent;
-    
+    background-color: orange;
   }
 
+  .tweeter {
+    background-color: orange;
+  }
+
+  .main-header {
+    margin-top: 0px;
+    width: 100%;
+  }
 }
 
 

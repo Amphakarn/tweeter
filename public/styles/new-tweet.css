@@ -112,10 +112,15 @@ span.content{
   align-items: center;
   margin-left: 20px;
   margin-right: 20px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
 }
 
-.fas {
+.tweet-footer span {
   padding-right: 5px;
+  color: #4056A1;
+}
+
+.tweet-footer span i {
+  margin-left: 5px;
 }
