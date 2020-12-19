@@ -21,10 +21,6 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
-
  .container {
    margin-left: 5%;
    margin-right: 5%;
@@ -33,6 +29,7 @@ body {
  }
 
 
+ /* Tablet Screen */
 @media only screen and (min-width: 791px) {
   html {
     font-size: 1.15em;
@@ -68,6 +65,7 @@ body {
 }
 
 
+/* Small Devices */
 @media only screen and (max-width: 790px) {
   body {
     display: flex;
@@ -77,6 +75,7 @@ body {
   .top-bar {
     position: relative;
     background-color: orange;
+    background-image: url("../images/connected.png");
   }
 
   .tweeter {
