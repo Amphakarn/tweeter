@@ -34,6 +34,7 @@ button {
   background-color: #4056A1;
   font-family: 'Bungee', cursive;
   font-size: 1.1rem;
+  border-radius: 5px;
   padding: 5px;
   margin-top: 10px;
   margin-bottom: 20px;

@@ -1,14 +1,8 @@
 $(document).ready(function () {
 
-  /*
-   * Client-side JS logic goes here
-   * jQuery is already loaded
-   * Reminder: Use (and do all your DOM work in) jQuery's document ready function
-   */
+  $('.error-messages').hide();
 
-  $(".error-messages").hide();
-
-  $(".tweet-form").on('submit', onSubmit);
+  $('.tweet-form').on('submit', onSubmit);
 
   loadTweets();
 });
@@ -19,10 +13,10 @@ const errorBoxTwo = '<i class="fas fa-exclamation-triangle"></i> Your message ha
 function onSubmit(event) {
   // Stop the form from being submitted
   event.preventDefault();
-  const $errorBox = $(".error-messages");
+  const $errorBox = $('.error-messages');
   const form = $(this);
-  const counter = form.find(".counter");
-  const text = $("#tweet-text").val();
+  const counter = form.find('.counter');
+  const text = $('#tweet-text').val();
 
   if (!text) {
     $errorBox.html(errorBoxOne).slideDown();
@@ -36,30 +30,32 @@ function onSubmit(event) {
   // Encode a set of form elements as a string for submission.
   const data = form.serialize();
 
-  $.ajax("/tweets", { method: "POST", data: data })
+  $.ajax('/tweets', { method: 'POST', data: data })
     .then(() => {
-      $("#tweet-text").val("");
+      $('#tweet-text').val('');
       counter.text(140);
-      // $(".counter").text(140);
       loadTweets();
     });
 }
 
+
 // Add tweet to the tweets container
 function renderTweets(tweetsArr) {
   for (const tweet of tweetsArr) {
-    // Create an HTML element out of each object
+    // Create an HTML elements out of each object
     const tweetElement = createTweetElement(tweet);
     // Attach the new elements to the DOM => prepend to an existing container on the page
-    $("#tweet-container").prepend(tweetElement);
+    $('#tweet-container').prepend(tweetElement);
   }
 }
+
 
 function escape(str) {
   let div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
+
 
 function fixDate(tweetDate) {
   let currentDate = new Date();
@@ -70,43 +66,44 @@ function fixDate(tweetDate) {
   let timeMinutes = timeSec / 60;
 
   if (timeDays > 1) {
-    return Math.floor(timeDays) + " days ago";
+    return Math.floor(timeDays) + ' days ago';
   }
 
   if (timeHours > 1) {
-    return Math.floor(timeHours) + " hours ago";
+    return Math.floor(timeHours) + ' hours ago';
   }
 
   if (timeMinutes > 1) {
-    return Math.floor(timeMinutes) + " minutes ago";
+    return Math.floor(timeMinutes) + ' minutes ago';
   }
 
-  return Math.floor(timeSec) + " seconds ago";
+  return Math.floor(timeSec) + ' seconds ago';
 }
 
+
 function createTweetElement(tweetData) {
-  console.log('tweetData: ', tweetData)
   const tweet = `
-    <article class="tweet">
-        <header class="tweet-header">
-          <div class="tweet-message">
-            <img class="avatar" src=${tweetData.user.avatars}>
-            <span class="name"></span><strong>${tweetData.user.name}</strong></span>
+    <article class='tweet'>
+        <header class='tweet-header'>
+          <div class='tweet-message'>
+            <img class='avatar' src=${tweetData.user.avatars}>
+            <span class='name'></span><strong>${tweetData.user.name}</strong></span>
           </div>
-          <span class="alias">${tweetData.user.handle}</span>
+          <span class='alias'>${tweetData.user.handle}</span>
         </header>
-        <span class="content">${escape(tweetData.content.text)}</span>
+        <span class='content'>${escape(tweetData.content.text)}</span>
         <footer class=tweet-footer>
           <h5>${fixDate(tweetData.created_at)}</h5>
           <span>
-            <i class="fas fa-flag"></i>
-            <i class="fas fa-retweet"></i>
-            <i class="fas fa-heart"></i>
+            <i class='fas fa-flag'></i>
+            <i class='fas fa-retweet'></i>
+            <i class='fas fa-heart'></i>
           </span>
         </footer>
     </article>`;
   return $(tweet);
 }
+
 
 function loadTweets() {
   const url = `http://localhost:8080/tweets`;
@@ -115,14 +112,13 @@ function loadTweets() {
     method: 'GET',
   })
     .done(function (data) {
-      $("#tweet-container").empty();
-      console.log("data: ", data)
+      $('#tweet-container').empty();
       renderTweets(data);
     })
     .fail(function () {
-      alert('error');
+      alert('Error');
     })
     .always(function () {
-      console.log('complete');
+      console.log('Complete');
     })
 }
