@@ -49,14 +49,14 @@ function renderTweets(tweetsArr) {
   }
 }
 
-
+// Prevent Cross-Site Scripting (XSS)
 function escape(str) {
   let div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
 
-
+// Change date to display in number of days, hours, minutes or seconds accordingly
 function fixDate(tweetDate) {
   let currentDate = new Date();
   let timeDiff = currentDate - tweetDate;
@@ -104,7 +104,7 @@ function createTweetElement(tweetData) {
   return $(tweet);
 }
 
-
+// Retrieve tweets from server
 function loadTweets() {
   const url = `http://localhost:8080/tweets`;
   $.ajax({

@@ -1,9 +1,11 @@
 $(document).ready(function () {
   console.log('Ready!');
 
+  // Hide error box
   const $errorBox = $('.error-messages');
   $errorBox.html('').slideUp();
 
+  // Check the character counter
   $('#tweet-text').on('input', function () {
     const count = $(this).val().length;
     const counter = 140 - count;
