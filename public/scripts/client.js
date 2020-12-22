@@ -10,6 +10,7 @@ $(document).ready(function () {
 const errorBoxOne = '<i class="fas fa-exclamation-triangle"></i> Please fill in your tweet message.';
 const errorBoxTwo = '<i class="fas fa-exclamation-triangle"></i> Your message has reach the maximum characters limit (140 max)!';
 
+// Post new tweet
 function onSubmit(event) {
   // Stop the form from being submitted
   event.preventDefault();
@@ -27,15 +28,20 @@ function onSubmit(event) {
     $errorBox.html(errorBoxTwo).slideDown();
     return;
   }
+
   // Encode a set of form elements as a string for submission.
   const data = form.serialize();
-
-  $.ajax('/tweets', { method: 'POST', data: data })
+  // Create POST Ajax request
+  $.ajax('/tweets', {
+    method: 'POST',
+    data: data
+  })
     .then(() => {
       $('#tweet-text').val('');
       counter.text(140);
       loadTweets();
-    });
+    })
+    .catch((err) => console.log(err));
 }
 
 
@@ -107,18 +113,14 @@ function createTweetElement(tweetData) {
 // Retrieve tweets from server
 function loadTweets() {
   const url = `http://localhost:8080/tweets`;
+
   $.ajax({
     url,
     method: 'GET',
   })
-    .done(function (data) {
+    .then((data) => {
       $('#tweet-container').empty();
       renderTweets(data);
     })
-    .fail(function () {
-      alert('Error');
-    })
-    .always(function () {
-      console.log('Complete');
-    })
+    .catch((err) => console.log(err));
 }
