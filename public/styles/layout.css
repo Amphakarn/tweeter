@@ -21,16 +21,16 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
- .container {
-   margin-left: 5%;
-   margin-right: 5%;
-   padding: 1rem;
-   width: 90%;
- }
+.container {
+  margin-left: 6%;
+  margin-right: 5%;
+  padding: 1rem;
+  width: 90%;
+}
 
 
- /* Tablet Screen */
-@media only screen and (min-width: 791px) {
+/* Desktop styles */
+@media only screen and (min-width: 1024px) {
   html {
     font-size: 1.15em;
   }
@@ -41,49 +41,16 @@ body {
   }
 
   .main-header {
-    width: 700px;
-    height: 500px;
+    min-width: 30%;
+    height: 55%;
     margin-top: 180px;
-    margin-left: 50px;
-  }
-
-  .main-header div {
-    margin-top: 60px;
-  }
-
-  .main-header .name {
-    margin-top: 0px;
-  }
-
-  .tweeter {
-    background-color: #4056A1 ;
+    margin-left: 60px;
   }
 
   .container {
     margin-top: 165px;
-  }
-}
-
-
-/* Small Devices */
-@media only screen and (max-width: 790px) {
-  body {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .top-bar {
-    position: relative;
-    background-color: orange;
-    background-image: url("../images/connected.png");
-  }
-
-  .tweeter {
-    background-color: orange;
-  }
-
-  .main-header {
-    margin-top: 0px;
-    width: 100%;
+    margin-right: 60px;
+    margin-left: 9%;
+    max-width: 55%;
   }
 }

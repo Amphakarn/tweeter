@@ -3,11 +3,13 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 10%;
+  height: 75px;
   padding-left: 2em;
   padding-right: 2em;
   position: fixed;
   width: 100%;
+  background-color: orange;
+  background-image: url("../images/connected.png");
 }
 
 .tweeter {
@@ -30,14 +32,17 @@
   width: 20px;
   height: 20px;
 }
+
 .write-new-tweet i {
   color: red;
 }
 
 
-/* Tablet Screen */
-@media only screen and (min-width: 791px) {
+/* Desktop styles */
+@media only screen and (min-width: 1024px) {
   .top-bar {
+    /* position: relative; */
     background-color: #4056A1;
+    background-image: none;
   }
 }

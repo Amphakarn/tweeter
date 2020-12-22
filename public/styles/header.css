@@ -5,13 +5,12 @@
   align-items: center;
   background-color: orange;
   background-image: url("../images/connected.png");
-  height: 470px;
   margin-bottom: 20px;  
 }
 
 .main-avatar {
   display: flex;
-  margin-top: 110px;
+  margin-top: 78px;
 }
 
 .name {
